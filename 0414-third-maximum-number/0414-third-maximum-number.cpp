@@ -1,22 +1,18 @@
 class Solution {
 public:
-    int getNthMax(const vector<int> &nums, int target)
-    {
+    
+    int thirdMax(vector<int>& nums) {
         set<int> numbers;
 
         for (auto num: nums)
         {
             numbers.insert(num);
-            if (numbers.size() > target)
+            if (numbers.size() > 3)
             {
                 numbers.erase(numbers.begin());
             }
         }
 
-        return numbers.size() == target ? *numbers.begin() : *numbers.rbegin();
-    }
-    
-    int thirdMax(vector<int>& nums) {
-        return getNthMax(nums, 3);
+        return numbers.size() == 3 ? *numbers.begin() : *numbers.rbegin();
     }
 };
