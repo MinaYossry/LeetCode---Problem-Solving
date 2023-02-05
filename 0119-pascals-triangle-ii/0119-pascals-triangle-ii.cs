@@ -26,10 +26,7 @@ public class Solution {
                 
                 mainArray = arr0;
             }
-
-            if(rowIndex%2==0)
-                return arr0;
-            else 
-                return mainArray;
+       
+            return (rowIndex%2==0) ? arr0 : mainArray;
         }
 }
