@@ -7,12 +7,9 @@ public:
         
         for (int i = 0; i < prices.size(); i++)
         {
-            if (prices.at(i) < minPrice)
-                minPrice = prices.at(i);
-            
-            int todayProfit = prices.at(i) - minPrice;
-            if (todayProfit > maxProfit)
-                maxProfit = todayProfit;
+            minPrice = min(minPrice, prices.at(i));
+            maxProfit = max(maxProfit, prices.at(i) - minPrice);
+
         }
         
         return maxProfit;
