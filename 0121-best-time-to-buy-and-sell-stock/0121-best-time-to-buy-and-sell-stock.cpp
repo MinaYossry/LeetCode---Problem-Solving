@@ -8,8 +8,8 @@ public:
         
         for (auto &price: prices)
         {
-            minPrice = min(minPrice, price);
-            maxProfit = max(maxProfit,price - minPrice);
+            minPrice = price < minPrice ? price : minPrice;
+            maxProfit = price - minPrice > maxProfit ? price - minPrice : maxProfit;
 
         }
         
