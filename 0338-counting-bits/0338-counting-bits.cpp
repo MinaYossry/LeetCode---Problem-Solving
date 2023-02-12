@@ -4,7 +4,7 @@ public:
         vector<int> result(n + 1);
 
         for (int i {}; i < result.size(); i++) {
-            result.at(i) = result.at(i >> 1) + i % 2;
+            result.at(i) = result.at(i >> 1) + (i & 1);
         }
 
         return result;
