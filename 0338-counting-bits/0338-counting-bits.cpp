@@ -24,11 +24,14 @@ public:
         
         while (number != 0) {
             double power = log2(number);
-            double remainder = power - static_cast<int>(power);
+            
+            int num = static_cast<int>(power);
+            
+            double frac = power - num;
+            
             counter += 1;
         
-            
-            number -= pow(2, static_cast<int>(power));
+            number -= pow(2, num);
         }
         
         return counter;
