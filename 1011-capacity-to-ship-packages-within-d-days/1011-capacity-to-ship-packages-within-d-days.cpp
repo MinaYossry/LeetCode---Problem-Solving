@@ -2,8 +2,16 @@ class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {
         
-        int left = *max_element(weights.begin(), weights.end());
-        int right = accumulate(weights.begin(), weights.end(), 0);
+        int left = weights.at(0);
+        int right = 0;
+        for (auto weight: weights)
+        {
+            if (weight > left)
+                left = weight;
+            
+            right += weight;
+        }
+
         
         if (days == 1)
             return right;
@@ -33,15 +41,13 @@ public:
                 {
                     tempSum += weight;
                 }
-                
-
             }
             
             
             if (tempDays <= days)
             {
                 right = mid;
-                    minResult = min(minResult, mid);
+                minResult = min(minResult, mid);
             }
             else
                 left = mid + 1;
