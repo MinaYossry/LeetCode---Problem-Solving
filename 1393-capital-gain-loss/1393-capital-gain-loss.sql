@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+/* Write your T-SQL query statement below */
 select stock_name, sum(
     case
         when operation = 'Sell' then price
