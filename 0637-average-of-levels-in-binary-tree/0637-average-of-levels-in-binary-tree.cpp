@@ -51,7 +51,7 @@ public:
                 result.push_back(average);
                 sum = 0;
                 count = 0;
-                current = next;
+                current = move(next);
                 next = queue<TreeNode*>();
             }
         }
