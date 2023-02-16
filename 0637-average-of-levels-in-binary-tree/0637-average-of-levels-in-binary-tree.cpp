@@ -18,43 +18,47 @@ public:
         if (!root->left && !root->right)
             return result;
         
-        queue<TreeNode*> current;
-        queue<TreeNode*> next;
+        queue<TreeNode*> *current = new queue<TreeNode*>();
+        queue<TreeNode*> *next = new queue<TreeNode*>();
         
         if (root->left)
-            current.push(root->left);
+            current->push(root->left);
         if (root->right)
-            current.push(root->right);
+            current->push(root->right);
 
         
         double sum = 0;
         int count = 0;
         double average = 0;
         
-        while(!current.empty())
+        while(!current->empty())
         {
-            TreeNode* currentNode = current.front();
-            current.pop();
+            TreeNode* currentNode = current->front();
+            current->pop();
             
             if(currentNode->left)
-                next.push(currentNode->left);
+                next->push(currentNode->left);
             
             if(currentNode->right)
-                next.push(currentNode->right);
+                next->push(currentNode->right);
             
             sum += currentNode->val;
             count++;
             
-            if (current.empty())
+            if (current->empty())
             {
                 average = sum / count;
                 result.push_back(average);
                 sum = 0;
                 count = 0;
+                delete current;
                 current = next;
-                next = queue<TreeNode*>();
+                next = new queue<TreeNode*>();
             }
         }
+        
+        delete current;
+        delete next;
         
         return result;
     }
