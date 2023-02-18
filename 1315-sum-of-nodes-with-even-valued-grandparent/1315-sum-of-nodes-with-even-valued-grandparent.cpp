@@ -16,10 +16,12 @@ public:
         if (!root)
             return 0;
         
-        if (grandParentEven)
-            return root->val + sum(root->left, root->val % 2 == 0, prevEven) + sum(root->right, root->val % 2 == 0, prevEven);
+        int sumChildren = sum(root->left, root->val % 2 == 0, prevEven) + sum(root->right, root->val % 2 == 0, prevEven);
         
-        return sum(root->left, root->val % 2 == 0, prevEven) + sum(root->right, root->val % 2 == 0, prevEven);
+        if (grandParentEven)
+            return root->val + sumChildren;
+        
+        return sumChildren;
     }
     int sumEvenGrandparent(TreeNode* root) {
         return sum(root, false, false);
