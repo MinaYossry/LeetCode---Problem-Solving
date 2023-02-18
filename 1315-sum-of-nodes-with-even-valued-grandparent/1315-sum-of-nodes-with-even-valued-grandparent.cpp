@@ -11,12 +11,12 @@
  */
 class Solution {
 public:
-    int sum(TreeNode* root, bool prevEven, bool grandParentEven)
+    int sum(TreeNode* root, bool parentEven, bool grandParentEven)
     {
         if (!root)
             return 0;
         
-        int sumChildren = sum(root->left, root->val % 2 == 0, prevEven) + sum(root->right, root->val % 2 == 0, prevEven);
+        int sumChildren = sum(root->left, root->val % 2 == 0, parentEven) + sum(root->right, root->val % 2 == 0, parentEven);
         
         if (grandParentEven)
             return root->val + sumChildren;
