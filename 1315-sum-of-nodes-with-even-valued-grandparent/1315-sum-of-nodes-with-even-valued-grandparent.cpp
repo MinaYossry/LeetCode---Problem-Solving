@@ -18,10 +18,7 @@ public:
         
         int sumChildren = sum(root->left, root->val % 2 == 0, parentEven) + sum(root->right, root->val % 2 == 0, parentEven);
         
-        if (grandParentEven)
-            return root->val + sumChildren;
-        
-        return sumChildren;
+        return  grandParentEven ? root->val + sumChildren : sumChildren;
     }
     int sumEvenGrandparent(TreeNode* root) {
         return sum(root, false, false);
